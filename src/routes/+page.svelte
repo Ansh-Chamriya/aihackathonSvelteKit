@@ -1,4 +1,7 @@
 <script lang="ts">
+  export let data;
+  // @ts-ignore
+  import TradingViewWidget from "svelte-tradingview-widget";
   import { onMount } from "svelte";
   import SparkleIcon from "$lib/components/SparkleIcon.svelte";
   import GithubIcon from "$lib/components/GithubIcon.svelte";
@@ -7,7 +10,6 @@
   import { Button } from "$lib/components/ui/button";
   import { Label } from "$lib/components/ui/label";
   import { Switch } from "$lib/components/ui/switch";
-  import TradingViewWidget from "svelte-tradingview-widget";
 
   import * as Card from "$lib/components/ui/card";
   import { Input } from "$lib/components/ui/input";
@@ -20,7 +22,19 @@
   function handleSwitchChange(event) {
     darkMode = event.detail;
   }
-
+  // onMount(async () => {
+  //   const data = await fetch("http://127.0.0.1:8000/predict", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       description: "give me top 5 stocks. ",
+  //     }),
+  //   });
+  //   const response = await data.json();
+  //   console.log(response);
+  // });
   let options = {
     symbol: "BSE:ITC",
     interval: "D",
@@ -96,9 +110,10 @@
     </section>
   </main>
   <footer class="p-[0.66rem] border-t border-gray-700">
-    <form action="">
+    <form method="post">
       <div class="flex items-center space-x-2">
         <Input
+          name="prompt"
           placeholder="Enter the prompt."
           class="flex-1 rounded-full px-4 py-1 w-64 text-gray-600 {darkMode
             ? 'bg-white'
@@ -106,6 +121,7 @@
           bind:value={prompt}
         />
         <Button
+          type="submit"
           variant={darkMode ? "secondary" : "default"}
           class="rounded-full"
         >
