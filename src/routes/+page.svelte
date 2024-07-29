@@ -7,18 +7,29 @@
   import { Button } from "$lib/components/ui/button";
   import { Label } from "$lib/components/ui/label";
   import { Switch } from "$lib/components/ui/switch";
-  //   import TickerTape from './TickerTape.svelte';
-  //   import AdvancedRealTimeChart from './AdvancedRealTimeChart.svelte';
+  import TradingViewWidget from "svelte-tradingview-widget";
+
   import * as Card from "$lib/components/ui/card";
   import { Input } from "$lib/components/ui/input";
   import { Send } from "lucide-svelte";
+  import TickerTape from "$lib/components/TickerTape.svelte";
 
-  export let darkMode = false;
+  export let darkMode = true;
   let prompt = "";
 
   function handleSwitchChange(event) {
     darkMode = event.detail;
   }
+
+  let options = {
+    symbol: "BSE:ITC",
+    interval: "D",
+    allow_symbol_change: true,
+    details: true,
+    timezone: "Asia/Kolkata",
+    theme: "dark",
+    autosize: true,
+  };
 </script>
 
 <div
@@ -32,26 +43,23 @@
       : 'bg-gray-100'}"
   >
     <div class="flex items-center space-x-2">
-      <SparkleIcon
-        class="w-6 h-6 {darkMode ? 'text-purple-500' : 'text-purple-700'}"
-      />
+      <SparkleIcon />
       <span>Stock Saarthi</span>
     </div>
     <div class="flex items-center space-x-4">
       <Button variant="ghost" size="icon" class="rounded-full">
-        <GithubIcon class="w-6 h-6" />
+        <GithubIcon />
       </Button>
       <div class="flex items-center space-x-2">
         <Label class="text-sm flex items-center space-x-2">
           {#if darkMode}
-            <SunIcon class="w-5 h-5" />
+            <SunIcon />
           {:else}
-            <MoonIcon class="w-5 h-5" />
+            <MoonIcon />
           {/if}
         </Label>
         <Switch
-          checked={darkMode}
-          on:change={handleSwitchChange}
+          bind:checked={darkMode}
           class="ring-orange-500 focus:ring-2 rounded-full {darkMode
             ? 'ring-2 ring-orange-500'
             : ''}"
@@ -59,25 +67,15 @@
       </div>
     </div>
   </header>
-  <!-- <TickerTape copyrightStyles={styles} colorTheme="dark" /> -->
+  <TickerTape />
+
   <main class="flex flex-1 relative">
-    <section>
-      <!-- <AdvancedRealTimeChart
-        container_id="tradingview_1"
-        theme="dark"
-        width={980}
-        symbol="BSE:ITC"
-        timezone="Asia/Kolkata"
-        height={570}
-        interval="D"
-        allow_symbol_change={true}
-        details={true}
-        copyrightStyles={styles}
-      /> -->
+    <section class="h-[542px] w-[980px]">
+      <TradingViewWidget {options} />
     </section>
     <section class="w-1/3 p-4 flex-shrink-0 overflow-auto">
       <div class="border-l border-{darkMode ? 'gray-700' : 'gray-300'} h-full">
-        <Card
+        <Card.Root
           class="h-[100%] {darkMode ? 'bg-white' : 'bg-[#111827] text-white'}"
         >
           <Card.Header>
@@ -93,17 +91,17 @@
               <p>Response 3: Consider buying stock DEF.</p>
             </div>
           </Card.Content>
-        </Card>
+        </Card.Root>
       </div>
     </section>
   </main>
   <footer class="p-[0.66rem] border-t border-gray-700">
-    <div class="flex items-center space-x-2">
-      <form action="">
+    <form action="">
+      <div class="flex items-center space-x-2">
         <Input
           placeholder="Enter the prompt."
           class="flex-1 rounded-full px-4 py-1 w-64 text-gray-600 {darkMode
-            ? ''
+            ? 'bg-white'
             : 'bg-gray-900 text-gray-100'}"
           bind:value={prompt}
         />
@@ -113,7 +111,7 @@
         >
           <Send color={darkMode ? "#0d0808" : "#ffffff"} />
         </Button>
-      </form>
-    </div>
+      </div>
+    </form>
   </footer>
 </div>

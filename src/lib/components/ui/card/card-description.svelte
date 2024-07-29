@@ -4,10 +4,10 @@
 
 	type $$Props = HTMLAttributes<HTMLParagraphElement>;
 
-	let class: $$Props["class"] = undefined;
-	export { class as class };
+	let className: $$Props["class"] = undefined;
+	export { className as class };
 </script>
 
-<p class={cn("text-muted-foreground text-sm", class)} {...$$restProps}>
+<p class={cn("text-muted-foreground text-sm", className)} {...$$restProps}>
 	<slot />
 </p>

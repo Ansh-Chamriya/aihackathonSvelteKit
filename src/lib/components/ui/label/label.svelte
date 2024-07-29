@@ -4,14 +4,14 @@
 
 	type $$Props = LabelPrimitive.Props;
 
-	let class: $$Props["class"] = undefined;
-	export { class as class };
+	let className: $$Props["class"] = undefined;
+	export { className as class };
 </script>
 
 <LabelPrimitive.Root
 	class={cn(
 		"text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
-		class
+		className
 	)}
 	{...$$restProps}
 >

@@ -7,14 +7,14 @@
 		tag?: HeadingLevel;
 	};
 
-	let class: $$Props["class"] = undefined;
+	let className: $$Props["class"] = undefined;
 	export let tag: $$Props["tag"] = "h3";
-	export { class as class };
+	export { className as class };
 </script>
 
 <svelte:element
 	this={tag}
-	class={cn("font-semibold leading-none tracking-tight", class)}
+	class={cn("font-semibold leading-none tracking-tight", className)}
 	{...$$restProps}
 >
 	<slot />

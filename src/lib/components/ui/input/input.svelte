@@ -6,9 +6,9 @@
 	type $$Props = HTMLInputAttributes;
 	type $$Events = InputEvents;
 
-	let class: $$Props["class"] = undefined;
+	let className: $$Props["class"] = undefined;
 	export let value: $$Props["value"] = undefined;
-	export { class as class };
+	export { className as class };
 
 	// Workaround for https://github.com/sveltejs/svelte/issues/9305
 	// Fixed in Svelte 5, but not backported to 4.x.
@@ -18,7 +18,7 @@
 <input
 	class={cn(
 		"border-input placeholder:text-muted-foreground focus-visible:ring-ring flex h-9 w-full rounded-md border bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-1 disabled:cursor-not-allowed disabled:opacity-50",
-		class
+		className
 	)}
 	bind:value
 	{readonly}
