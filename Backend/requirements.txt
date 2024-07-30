@@ -1,0 +1,12 @@
+langchain_groq
+langchain_community
+langchain
+langchain_core
+chromadb
+groq
+faiss_cpu
+langchain_cohere
+google
+fastapi
+uvicorn
+beautifulsoup4
