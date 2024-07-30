@@ -15,6 +15,8 @@
   import { Input } from "$lib/components/ui/input";
   import { Send } from "lucide-svelte";
   import TickerTape from "$lib/components/TickerTape.svelte";
+  import Chatview from "$lib/chatview.svelte";
+  import Chat from "$lib/chat.svelte";
 
   export let darkMode = true;
   let prompt = "";
@@ -98,18 +100,17 @@
               Responses from the stock market analyst model will appear here.
             </Card.Description>
           </Card.Header>
-          <Card.Content class="flex-1 overflow-auto">
-            <div class="space-y-4">
-              <p>Response 1: Stock XYZ is expected to rise by 5%.</p>
-              <p>Response 2: Stock ABC has a stable outlook.</p>
-              <p>Response 3: Consider buying stock DEF.</p>
+          <Card.Content class="flex flex-col justify-between">
+            <div class="space-y-4 max-h-80 min-h-80 overflow-y-auto">
+              <Chatview></Chatview>
             </div>
+            <Chat></Chat>
           </Card.Content>
         </Card.Root>
       </div>
     </section>
   </main>
-  <footer class="p-[0.66rem] border-t border-gray-700">
+  <!-- <footer class="p-[0.66rem] border-t border-gray-700">
     <form method="post">
       <div class="flex items-center space-x-2">
         <Input
@@ -129,5 +130,5 @@
         </Button>
       </div>
     </form>
-  </footer>
+  </footer> -->
 </div>
