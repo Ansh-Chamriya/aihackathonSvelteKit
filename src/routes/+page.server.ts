@@ -18,7 +18,7 @@ export const actions = {
         body: JSON.stringify({ description: prompt }),
       }
     );
-    const response = await data.json();
+    const response = await data.text();
     console.log("response:", response);
   },
 };
