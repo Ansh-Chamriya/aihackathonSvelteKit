@@ -2,7 +2,7 @@
   export let data;
   // @ts-ignore
   import TradingViewWidget from "svelte-tradingview-widget";
-  import { onMount } from "svelte";
+  import { afterUpdate, onMount } from "svelte";
   import SparkleIcon from "$lib/components/SparkleIcon.svelte";
   import GithubIcon from "$lib/components/GithubIcon.svelte";
   import SunIcon from "$lib/components/SunIcon.svelte";
@@ -47,6 +47,19 @@
     theme: "dark",
     autosize: true,
   };
+
+  function scrollToBottom() {
+    const chatDiv = document.getElementById("chat-container");
+    chatDiv.scrollTop = chatDiv.scrollHeight;
+  }
+  onMount(() => {
+    scrollToBottom();
+  });
+
+  // Scroll to bottom after each update
+  afterUpdate(() => {
+    scrollToBottom();
+  });
 </script>
 
 <div
@@ -102,7 +115,10 @@
             </Card.Description>
           </Card.Header>
           <Card.Content class="flex flex-col justify-between">
-            <div class="space-y-4 max-h-80 min-h-80 overflow-y-auto">
+            <div
+              class="space-y-4 max-h-80 min-h-80 overflow-y-auto overflow-x-hidden"
+              id="chat-container"
+            >
               <Chatview></Chatview>
             </div>
             <Chat></Chat>

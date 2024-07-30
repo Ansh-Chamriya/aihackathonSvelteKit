@@ -19,11 +19,11 @@
 		});
 
 		if (req.status === 201) {
-			const { response } = await req.json();
+			const { responseText } = await req.json();
 			db.transaction("rw", db.chats, async () => {
 				await db.chats.add({
 					prompt: prompt,
-					response: response,
+					response: responseText,
 					cretaedAt: new Date(),
 				});
 			})

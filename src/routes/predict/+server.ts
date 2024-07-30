@@ -24,9 +24,21 @@ function generateRandomText(wordCount: number): string {
 
 export const POST: RequestHandler = async ({ request }) => {
     const { prompt } = await request.json();
-    const random = Math.floor(Math.random() * 100);
-    const response = generateRandomText(random);
-    console.log(prompt);
+    const response = await fetch(
+        "https://bxdwqjsk-8000.inc1.devtunnels.ms/predict",
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "allow-acess-control-origin": "*",
+            },
 
-    return json({ response }, { status: 201 });
+            body: JSON.stringify({ description: prompt }),
+        }
+    );
+    const responseText = await response.text();
+    console.log("response:", response, responseText);
+
+
+    return json({ responseText }, { status: 201 });
 };
