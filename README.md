@@ -1,4 +1,4 @@
-# Stock Sarthi
+# Stock Saarthi
 
 This project provides a FastAPI-based locally hosted web-application to analyze and predict stock market trends using historical and real-time data. The API leverages various tools such as the LangChain library, FAISS for similarity search, and the Groq language model for generating responses based on the context.
 
@@ -55,8 +55,8 @@ npm i
       ```
 
   On Windows use
-  `    env\Scripts\activate
-   `
+  `   env\Scripts\activate
+`
 
 2. **Installing Dependencies :**
 
