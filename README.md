@@ -31,15 +31,15 @@ This project provides a FastAPI-based locally hosted web-application to analyze 
 
     npm (Node Package Manager) is included with Node.js. You can verify the installation and version of npm by running the following command in your terminal:
 
-        ```bash
-        npm -v
-        ```
+      ```bash
+      npm -v
+      ```
 
     Install all the packages by using the following command
 
-```bash
-npm i
-```
+    ```bash
+    npm i
+    ```
 
     if it there then run following for starting UI :
 
@@ -49,10 +49,10 @@ npm i
 
 - **Optional:**
 
-      ```bash
-      python -m venv env
-      source env/bin/activate
-      ```
+    ```bash
+    python -m venv env
+    source env/bin/activate
+    ```
 
   On Windows use
   `   env\Scripts\activate
