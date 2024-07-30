@@ -1,6 +1,13 @@
 # Stock Saarthi
 
+## Demo 
+
+[![Watch the video](https://img.youtube.com/vi/eAKuxP3CdH8/0.jpg)](https://youtu.be/eAKuxP3CdH8)
+
+
 This project provides a FastAPI-based locally hosted web-application to analyze and predict stock market trends using historical and real-time data. The API leverages various tools such as the LangChain library, FAISS for similarity search, and the Groq language model for generating responses based on the context.
+
+
 
 ## Note :
 
