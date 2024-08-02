@@ -12,6 +12,7 @@ from datetime import datetime, date, timedelta
 from langchain_cohere import CohereEmbeddings
 from time import time
 import json, time
+from markdown import markdown
 from regex import retrieve_symbol
 from web_scrap import search_urls, load_data_from_links, scrap_urls
 from fastapi.middleware.cors import CORSMiddleware
@@ -222,9 +223,16 @@ async def predict(query: Query):
         }
     )
     print("**" * 50)
-    print(response["answer"])
-    return response["answer"]
-
+    # response = response['answer'].replace("\n\n","\n")
+    # response = response.replace("\n","")
+    # print(response)
+    # response=response['answer'].replace("\n","<br>")
+    # response=response.replace("(",'<a>')
+    # response=response.replace(")",'</a>')
+    # response=response.replace('\"','*')
+    # response=response.replace('/"','*')
+    print(type(response))
+    return response
 
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000)
